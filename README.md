@@ -31,6 +31,7 @@ into SRAM from the chip's ROM UBOOT and lives only until power-off.
 | `android/` | The Android USB-host app (Kotlin, platform `android.hardware.usb` only, no third-party deps). |
 | `tools/usbfiles_host.py` | Mac/Linux host mock (pyusb). |
 | `docs/PROTOCOL.md` | The wire protocol and the two-way session. |
+| `docs/PROPOSAL.md` | Proposal for extending it: listing, fetch, create/rename/delete, two-way transfer, capability/format filtering, and audio/MIDI capture. |
 | `docs/INTEGRATION.md` | How to build/run the firmware and where each piece plugs in. |
 
 ## Quick start
@@ -50,6 +51,13 @@ full steps in `docs/INTEGRATION.md`.
 Verified on hardware **2026-10-13**: the payload enumerates as the vendor device
 `1209:0003` "Oscuro File Bridge", the scrollable list renders on the SMK-37 LCD,
 and fake lists are exchanged in both directions (phone app and Mac mock).
+
+## Roadmap
+
+The prototype exchanges fake lists only. `docs/PROPOSAL.md` is the design for a
+real file service (directory listing, fetch, create/rename/delete, two-way
+resumable transfer, capability/format filtering, and later USB audio/MIDI
+capture). It is a proposal, not implemented.
 
 ## Limitations
 
