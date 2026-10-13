@@ -1,0 +1,17 @@
+# Android / Gradle
+android/.gradle/
+android/build/
+android/app/build/
+android/.kotlin/
+android/local.properties
+android/.idea/
+*.iml
+*.apk
+
+# Python
+__pycache__/
+*.pyc
+
+# Editors
+.idea/
+.DS_Store

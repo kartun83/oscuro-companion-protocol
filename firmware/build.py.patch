@@ -1,0 +1,52 @@
+diff --git a/firmware/ram-lvgl/build.py b/firmware/ram-lvgl/build.py
+index a33fa4d..8dbd79a 100644
+--- a/firmware/ram-lvgl/build.py
++++ b/firmware/ram-lvgl/build.py
+@@ -22,7 +22,7 @@ def main():
+     ap = argparse.ArgumentParser(description=__doc__)
+     ap.add_argument('--preview', action='store_true')
+     ap.add_argument('--version', choices=['8', '9'], default='9')
+-    ap.add_argument('--app', choices=['demo', 'bench', 'i18n', 'scan', 'analog', 'led', 'audio', 'smp', 'gpio', 'isa', 'pf0', 'copex', 'vec', 'live', 'about', 'ble'], default='demo')
++    ap.add_argument('--app', choices=['demo', 'bench', 'i18n', 'scan', 'analog', 'led', 'audio', 'smp', 'gpio', 'isa', 'pf0', 'copex', 'vec', 'live', 'about', 'ble', 'usbfiles'], default='demo')
+     ap.add_argument('--opt', choices=['s', '2'], default='s', help='compiler -O level')
+     ap.add_argument('--lines', type=int, default=20, help='bench: draw buffer rows (x2 buffers)')
+     ap.add_argument('--string', choices=['builtin', 'clib'], default='builtin',
+@@ -107,7 +107,7 @@ def main():
+     if commit != expected:
+         raise RuntimeError('LVGL checkout differs from the pinned release')
+     kind = 'host' if args.preview else 'wl82'
+-    if args.app in ('i18n', 'scan', 'analog', 'led', 'audio', 'smp', 'gpio', 'isa', 'pf0', 'copex', 'vec'):
++    if args.app in ('i18n', 'scan', 'analog', 'led', 'audio', 'smp', 'gpio', 'isa', 'pf0', 'copex', 'vec', 'usbfiles'):
+         kind = args.app + '-' + kind
+     if args.app == 'bench':
+         kind = 'bench-O%s-%s' % (args.opt, kind)
+@@ -116,7 +116,7 @@ def main():
+         if args.trim:
+             kind = kind.replace('bench-', 'bench-trim-')
+     if args.panel != '240x240':
+-        if args.app in ('scan', 'analog', 'led', 'audio', 'smp', 'gpio', 'isa', 'pf0', 'copex', 'vec'):
++        if args.app in ('scan', 'analog', 'led', 'audio', 'smp', 'gpio', 'isa', 'pf0', 'copex', 'vec', 'usbfiles'):
+             raise SystemExit('--app %s has a fixed 240x240 layout' % args.app)
+         kind += '-' + args.panel
+     out = HERE / 'build' / ('v' + args.version) / kind
+@@ -190,6 +190,11 @@ def main():
+         if args.preview:
+             raise SystemExit('--app isa has no preview (pi32v2 inline asm)')
+         flags += ['-msimd', '-mcordic']   # packed SIMD and copex; the ISA1 probe's own instructions
++    if args.app == 'usbfiles':
++        if args.version != '9':
++            raise SystemExit('--app usbfiles is LVGL 9 only')
++        if args.preview:
++            raise SystemExit('--app usbfiles has no preview (vendor USB device + panel)')
+     if args.app == 'smp' and not args.preview:
+         flags += ['-mfprev1']          # SDK demo Makefiles: hardware FPU revision 1
+     if args.panel == '320x240':
+@@ -200,6 +205,8 @@ def main():
+         flags += ['-target', 'pi32v2', '-mcpu=r3', '-integrated-as', '-ffreestanding',
+                   '-fno-builtin', '-I' + str(SDK / 'include_lib/newlib/include')]
+     sources = sorted((lv / 'src').rglob('*.c')) + [HERE / (args.app + '.c')]
++    if args.app == 'usbfiles':
++        sources.append(HERE / 'usbven.c')
+     if args.app == 'isa':
+         sources += [HERE.parent / 'core/engine/va/ti_osc_morph.c']   # the ISA1 probe times the Viroid reader
+         flags += ['-I' + str(HERE.parent / 'core')]
