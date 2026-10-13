@@ -70,4 +70,10 @@ capture). It is a proposal, not implemented.
 
 ## License
 
-Not yet chosen. Add one before distributing.
+**Apache License, Version 2.0** — see [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
+
+Permissive by design: implement the protocol or use/modify this code freely; the
+only requirements are attribution (keep the copyright and `NOTICE`) and the
+usual no-misrepresentation terms. The goal is wide adoption and
+interoperability, so there is no copyleft and no restriction on using it in
+closed products.

@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+/* Copyright 2026 Aleksei Tveritinov */
+
 /* Polled USB vendor-class device on the WL82 full-speed controller, for the
  * Oscuro File Bridge prototype. See usbven.c. */
 #ifndef USBVEN_H

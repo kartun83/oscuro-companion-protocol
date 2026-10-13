@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+/* Copyright 2026 Aleksei Tveritinov */
+
 /* Oscuro File Bridge — the wire protocol shared by the keyboard RAM app
  * (usbfiles.c) and the host side (tools/usbfiles_host.py, android/).
  *

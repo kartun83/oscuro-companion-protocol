@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Aleksei Tveritinov
+
 """Oscuro File Bridge — Mac/Linux host mock for the keyboard RAM payload.
 
 Talks to the keyboard payload built from firmware/usbfiles.c over the vendor

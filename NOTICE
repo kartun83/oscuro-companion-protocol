@@ -1,0 +1,20 @@
+Oscuro File Bridge
+Copyright 2026 Aleksei Tveritinov
+
+This product includes software developed as part of the Oscuro project.
+
+The Oscuro File Bridge protocol and this reference implementation are offered
+for wide adoption and interoperability. You may implement the protocol, and use
+and modify this code, under the terms of the Apache License, Version 2.0. See
+LICENSE. The only requirements are the usual Apache ones: keep the copyright and
+NOTICE attribution, and do not misrepresent the origin of the software.
+
+Third-party components used at build time or at runtime (none of them are
+distributed in this repository):
+
+  - LVGL 9.6            MIT License          https://github.com/lvgl/lvgl
+  - pyusb               BSD-3-Clause         https://github.com/pyusb/pyusb
+  - JieLi AC79 AIoT SDK Apache License 2.0   © Zhuhai Jieli Technology
+                        (firmware build only; not part of this repository)
+
+The Android app depends only on the platform `android.hardware.usb` API.

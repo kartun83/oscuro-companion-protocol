@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+/* Copyright 2026 Aleksei Tveritinov */
+
 /* Oscuro File Bridge — keyboard side (RAM payload run from ROM UBOOT1.00).
  *
  * A minimal LVGL UI with a scrolling "file" list, plus a vendor-class USB

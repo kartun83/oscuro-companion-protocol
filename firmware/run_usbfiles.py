@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Aleksei Tveritinov
+
 """Run the Oscuro File Bridge keyboard payload (firmware/ram-lvgl/usbfiles.c)
 from WL82 ROM UBOOT1.00 RAM.
 
