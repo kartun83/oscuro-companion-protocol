@@ -32,6 +32,7 @@ into SRAM from the chip's ROM UBOOT and lives only until power-off.
 | `tools/usbfiles_host.py` | Mac/Linux host mock (pyusb). |
 | `docs/PROTOCOL.md` | The wire protocol and the two-way session. |
 | `docs/PROPOSAL.md` | Proposal for extending it: listing, fetch, create/rename/delete, two-way transfer, capability/format filtering, and audio/MIDI capture. |
+| `docs/REMOTE_UI.md` | Proposal for the whole-device semantic remote UI: the device describes what's shown and available; the companion lays it out its own way (no LVGL/pixels). |
 | `docs/INTEGRATION.md` | How to build/run the firmware and where each piece plugs in. |
 
 ## Quick start
@@ -57,7 +58,8 @@ and fake lists are exchanged in both directions (phone app and Mac mock).
 The prototype exchanges fake lists only. `docs/PROPOSAL.md` is the design for a
 real file service (directory listing, fetch, create/rename/delete, two-way
 resumable transfer, capability/format filtering, and later USB audio/MIDI
-capture). It is a proposal, not implemented.
+capture); `docs/REMOTE_UI.md` adds a whole-device semantic remote-UI model. Both
+are proposals, not implemented.
 
 ## Limitations
 

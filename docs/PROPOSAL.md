@@ -96,6 +96,10 @@ bitmask (split across two u32 fields), plus scalar limits:
 | 17 | `COPY_IN_DEVICE` | server-side copy without round-tripping bytes |
 | 18 | `STAT_MTIME` | metadata carries modification time |
 | 19 | `QUERY_FREE_SPACE` | storage-free reporting |
+| 20 | `UI_MODEL` | whole-device semantic UI model (§12, REMOTE_UI.md) |
+| 21 | `UI_CONTROL` | companion may drive the UI/controls (`UI_ACT`) |
+| 22 | `UI_EVENTS` | subscribe + pushed `UI_VALUE`/`UI_STATE`/`UI_EVENT` |
+| 23 | `UI_SNAPSHOT` | optional device-rendered snapshot of a region (§12) |
 
 Unknown bits are ignored. A host offers a feature list it supports and the
 device answers with the intersection it implements — or, simpler for v1, the
@@ -310,8 +314,30 @@ as data arrives, then commits through the normal file path.
 | **1** | `GET_CAPS` + manifest; filtered/paged listing; `STAT`; read download with credits; `CREATE`/write upload with atomic commit; `RENAME`, `DELETE`, `MKDIR`; CRC32. Read-only namespaces first (`recordings`, `system`), then writable `presets`. |
 | **2** | `SEEK_READ`, resume (`WRITE_RESUME`), `PROGRESS`; `COPY_IN_DEVICE`; `EVENT`s; `QUERY_FREE_SPACE`; format-role filtering. |
 | **3** | `STREAM_AUDIO` / `STREAM_MIDI` capture, alongside the existing UAC/USB-MIDI realtime interfaces. |
+| **4** | Remote UI (`UI_MODEL`/`UI_CONTROL`/`UI_EVENTS`), then optional `UI_SNAPSHOT` — see §12. |
 
-## 12. Open questions
+## 12. Remote UI / whole-device model
+
+The device can also describe its **whole UI and controls semantically** — what is
+shown, what values exist, what is available, and what can be acted on — so a
+companion app can mirror it or build its own layout. It deliberately says
+**what**, not **how**: no pixels, no coordinates, no LVGL/toolkit names. It is
+covered by feature bits 20–23 above and specified in
+[REMOTE_UI.md](REMOTE_UI.md).
+
+In one paragraph: the device exposes **surfaces** (`SCREEN`, `CONTROLS`,
+`PARAMETERS`, `INDICATORS`, `TRANSPORT`); a surface is a tree of **nodes** with a
+generic **role** (label, value, range, toggle, choice, key, pad, encoder, …),
+**state/availability**, and a **binding** to an entity; values/state stream via
+subscribe (`0x80–0x8E`); a companion acts with `UI_ACT` (invoke/set/adjust/
+navigate), routed through the device's normal input path so local and remote stay
+in sync. **Presentation hints** (widget/emphasis/order/group) are advisory and
+ignorable, so the companion may lay the UI out however it wants. An **optional
+snapshot** capability can rasterise a region for exact fidelity, and is never
+required. Nothing in the model assumes LVGL or any GUI toolkit — a firmware with
+no screen exposes only `CONTROLS`/`PARAMETERS`.
+
+## 13. Open questions
 
 - **Handles per connection vs persistent file ids**: is a stable id worth the
   firmware bookkeeping, or are paths enough for Phase 1?
