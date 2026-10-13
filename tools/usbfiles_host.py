@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-# Copyright 2026 Aleksei Tveritinov
+# Copyright 2026 Aleksei Tveritinov (Kartun)
 
 """Oscuro File Bridge — Mac/Linux host mock for the keyboard RAM payload.
 

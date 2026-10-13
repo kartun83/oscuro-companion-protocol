@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright 2026 Aleksei Tveritinov
+// Copyright 2026 Aleksei Tveritinov (Kartun)
 
 package ai.oscuro.filebridge
 

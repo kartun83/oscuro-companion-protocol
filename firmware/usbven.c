@@ -1,5 +1,5 @@
 /* SPDX-License-Identifier: Apache-2.0 */
-/* Copyright 2026 Aleksei Tveritinov */
+/* Copyright 2026 Aleksei Tveritinov (Kartun) */
 
 /* Polled USB vendor-class device on the WL82 full-speed controller JL_USB
  * (0x11800), for the Oscuro File Bridge prototype (firmware/ram-lvgl/
