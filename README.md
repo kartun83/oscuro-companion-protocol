@@ -31,6 +31,8 @@ into SRAM from the chip's ROM UBOOT and lives only until power-off.
 | `android/` | The Android USB-host app (Kotlin, platform `android.hardware.usb` only, no third-party deps). |
 | `tools/usbfiles_host.py` | Mac/Linux host mock (pyusb). |
 | `docs/PROTOCOL.md` | The wire protocol and the two-way session. |
+| `docs/PROTOCOL_V1.md` | **v1 draft spec**: tagged-field messages, files service, control, UI tiers (announce, entities, screen, control), compatibility with v0. |
+| `docs/FEASIBILITY.md` | What fits the SMK-37 (storage, USB, RAM), the proposed profile and what still needs measuring. |
 | `docs/PROPOSAL.md` | Proposal for extending it: listing, fetch, create/rename/delete, two-way transfer, capability/format filtering, and audio/MIDI capture. |
 | `docs/REMOTE_UI.md` | Proposal for the whole-device semantic remote UI: the device describes what's shown and available; the companion lays it out its own way (no LVGL/pixels). |
 | `docs/INTEGRATION.md` | How to build/run the firmware and where each piece plugs in. |

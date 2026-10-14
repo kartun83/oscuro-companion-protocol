@@ -1,6 +1,6 @@
 # Oscuro File Bridge — extension proposal (v1)
 
-Status: **proposal only, not implemented.** This describes how the prototype
+Status: **superseded by [PROTOCOL_V1.md](PROTOCOL_V1.md)** (message layouts, tag encoding, priorities, tiers); kept for goals and rationale. Originally: **proposal only, not implemented.** This describes how the prototype
 protocol in [PROTOCOL.md](PROTOCOL.md) (referred to here as **v0**) could grow
 into a full device↔host file service: directory listing, fetch, create/rename/
 delete, two-way transfer, capability/format filtering, and — later — USB audio

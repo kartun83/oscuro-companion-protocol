@@ -1,6 +1,6 @@
 # Oscuro Remote Surface — remote UI extension (proposal)
 
-Status: **proposal only, not implemented.** This extends the File Bridge protocol
+Status: **model kept; wire section (§10) superseded by [PROTOCOL_V1.md](PROTOCOL_V1.md) §9** (tagged fields, tiers, speakable names, `INPUT`/`FOCUS`). Originally: **proposal only, not implemented.** This extends the File Bridge protocol
 ([PROTOCOL.md](PROTOCOL.md) v0, [PROPOSAL.md](PROPOSAL.md) v1) with a
 **whole-device, semantic remote-UI model**: the device tells a companion app
 *what* is shown and *what* is available, and the companion renders it however it
